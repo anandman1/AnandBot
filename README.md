@@ -1,5 +1,3 @@
-Here's a comprehensive README.md template for the AnandBot project:
-
 ```markdown
 # Bedrock Chat Interface
 
