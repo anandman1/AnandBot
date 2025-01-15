@@ -7,7 +7,7 @@ A simple web interface that connects to AWS Bedrock's Cohere Command model throu
 
 ## Architecture
 
-```
+```ascii
 +-------------+     +--------------+     +------------------+     +------------------+
 |   Frontend  | --> | API Gateway  | --> | Lambda Function | --> | Amazon Bedrock   |
 | (HTML/JS)   |     | (REST API)   |     | (Python)        |     | (Cohere Command) |
