@@ -1,0 +1,4 @@
+Hello, 
+
+Logic and AWS services' configuration is based on Felix Yu's youtube video:Build a ChatGPT on AWS in 17 Minutes  https://www.youtube.com/watch?v=aMAmD-1SFYQ
+This tutorial does not involve a front end app to use the backend services, so I needed to modify the python code used in the lambda function. The updated code is available in the file lambda_function.py in this folder. 
