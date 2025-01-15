@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AnandBot</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+        #promptInput {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        #response {
+            margin-top: 20px;
+            padding: 10px;
+               border: 1px solid #ccc;
+            border-radius: 4px;
+            min-height: 100px;
+            white-space: pre-wrap;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:disabled {
+            background-color: #cccccc;
+        }
+        .loading {
+            color: #666;
+            font-style: italic;
+        }
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to AnandBot</h1>
+    <textarea id="promptInput" rows="4" placeholder="Ask AnandBot anything..."></textarea>
+    <button id="submitButton">Submit</button>
+    <div id="response"></div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('submitButton').addEventListener('click', submitPrompt);
+        });
+
+        async function submitPrompt() {
+            console.log('Submit button clicked');
+
+            const promptInput = document.getElementById('promptInput');
+            const responseDiv = document.getElementById('response');
+            const submitButton = document.getElementById('submitButton');
+
+            console.log('Input value:', promptInput.value);
+
+            // Disable button and sh show loading state
+            submitButton.disabled = true;
+            responseDiv.innerHTML = '<p class="loading">Processing...</p>';
+
+            try {
+                console.log('Sending request...');
+                const response = await fetch('YOUR API GATEWAY ENDPOINT HERE FOLLOWED BY /ask', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        prompt: promptInput.value
+                    })
+                });
+
+                console.log('Response received:', response.status);
+                const data = await response.json();
+                console.log('Response data:', data);
+
+                if (response.ok) {
+                    // Use the response data directly since it's already in the correct format
+                    responseDiv.textContent = data.response;
+                } else {
+                    responseDiv.innerHTML = `<p class="error">Error: ${data.message || 'Failed to get response'}</p>`;
+                }
+            } catch (error) {
+                console.error('Error details:', error);
+                responseDiv.innerHTML = `<p class="error">Error: ${error.message}</p>`;
+            } finally {
+                // Re-enable button
+                submitButton.disabled = false;
+            }
+        }
+    </script>
+</body>
+</html>
