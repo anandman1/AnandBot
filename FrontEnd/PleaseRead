@@ -3,5 +3,5 @@ Hello,
 Please first complete the Backend part and then start with the front end.
 
 Logic of deploying the frontend app by using AWS Amplify is based on Tiny Technical Tutorials' youtube video: AWS Project: Architect and Build an End-to-End AWS Web Application from Scratch  https://www.youtube.com/watch?v=7m_q1ldzw0U&t=1327s
-But this tutorial is not about building a chatBot, so use this tutorial to understand how to quickly deploy (drand and drop) an app by using AWS Amplify service. 
+But this tutorial is not about building a chatBot, so use this tutorial to understand how to quickly deploy (drag and drop) an app by using AWS Amplify service. 
 The html file required for this project (building a chatBot) is available in this folder; file name: index.hml. Download this file on your computer, compress it to .zip format and drop it in your AWS Amplify dashboard to quickly deploy the app.
